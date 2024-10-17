@@ -1,5 +1,21 @@
 ---
+import '../styles/global.css';
 
+const pageTitle = 'About';
+const identity = {
+    name: 'Nostradamus',
+    age: 500,
+    occupation: 'Astrologer',
+    country: 'France',
+    hobbies: ['Predicting the future', 'Writing prophecies', 'Studying the stars'],
+};
+const skills = ['Astrology', 'Prophecy', 'Stargazing', 'Writing', 'Public speaking'];
+const happy = true;
+const finished = false;
+const goal = 3;
+const skillColour = 'brown';
+const fontWeight = 'bold';
+const textCase = 'uppercase';
 ---
 
 <html lang="en">
@@ -8,7 +24,18 @@
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-        <title>Astronaut / About</title>
+        <title>Astronaut / {pageTitle}</title>
+        <style define:vars={{ skillColour, fontWeight, textCase }}>
+            h1 {
+                color: purple;
+                font-size: 4rem;
+            }
+            .skill {
+                color: var(--skillColour);
+                font-weight: var(--fontWeight);
+                text-transform: var(--textCase);
+            }
+        </style>
     </head>
     <body>
         <header>
@@ -21,7 +48,7 @@
                 </ul>
             </nav>
         </header>
-        <h2>About</h2>
+        <h2>{pageTitle}</h2>
         <p>What do we know about astronauts?</p>
         <p>
             The history of astronauts began with Yuri Gagarin, who became the first human to journey into outer space on April 12, 1961, aboard Vostok 1. This
@@ -29,5 +56,28 @@
             1969. Since then, astronauts from various countries have participated in numerous space missions, contributing to our understanding of space and
             advancing human space exploration.
         </p>
+        <hr />
+        <p>Here are a few facts about me:</p>
+        <ul>
+            <li>My name is {identity.name}.</li>
+            <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
+            {
+                identity.hobbies.length >= 2 && (
+                    <li>
+                        Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}
+                    </li>
+                )
+            }
+        </ul>
+        <p>My skills are:</p>
+        <ul>
+            {skills.map((skill) => <li class="skill">{skill}</li>)}
+        </ul>
+        <hr />
+        {happy && <p>I am happy to be learning Astro!</p>}
+
+        {finished && <p>I finished this tutorial!</p>}
+
+        {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
     </body>
 </html>

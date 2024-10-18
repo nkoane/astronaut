@@ -1,4 +1,6 @@
 ---
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 ---
 
@@ -11,28 +13,27 @@ import '../styles/global.css';
         <title>Astronaut / Blog</title>
     </head>
     <body>
-        <header>
-            <h1>Astronaut</h1>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/blog">Blog</a></li>
-                </ul>
-            </nav>
-        </header>
-        <h2>Blog</h2>
-        <p>
-            Welcome to the Astronaut blog! Here, you'll find the latest news and updates on space exploration, astronaut training, and more. Check back often
-            for new posts.
-        </p>
-        <aside>
-            <h3>Recent Posts</h3>
-            <ul>
-                <li><a href="/posts/post-1">Post 1</a></li>
-                <li><a href="/posts/post-2">Post 2</a></li>
-                <li><a href="/posts/post-3">Post 3</a></li>
-            </ul>
-        </aside>
+        <main>
+            <header>
+                <h1>Astronaut</h1>
+                <Navigation />
+            </header>
+            <section>
+                <h2>Blog</h2>
+                <p>
+                    Welcome to the Astronaut blog! Here, you'll find the latest news and updates on space exploration, astronaut training, and more. Check back
+                    often for new posts.
+                </p>
+                <aside>
+                    <h3>Recent Posts</h3>
+                    <ul>
+                        <li><a href="/posts/post-1">Post 1</a></li>
+                        <li><a href="/posts/post-2">Post 2</a></li>
+                        <li><a href="/posts/post-3">Post 3</a></li>
+                    </ul>
+                </aside>
+            </section>
+            <Footer />
+        </main>
     </body>
 </html>

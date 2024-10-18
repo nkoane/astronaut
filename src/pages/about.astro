@@ -1,4 +1,6 @@
 ---
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
 const pageTitle = 'About';
@@ -38,46 +40,45 @@ const textCase = 'uppercase';
         </style>
     </head>
     <body>
-        <header>
-            <h1>Astronaut</h1>
-            <nav>
+        <main>
+            <header>
+                <h1>Astronaut</h1>
+                <Navigation />
+            </header>
+            <section>
+                <h2>{pageTitle}</h2>
+                <p>What do we know about astronauts?</p>
+                <p>
+                    The history of astronauts began with Yuri Gagarin, who became the first human to journey into outer space on April 12, 1961, aboard Vostok
+                    1. This milestone was followed by the United States' Apollo missions, which culminated in Neil Armstrong and Buzz Aldrin landing on the moon
+                    on July 20, 1969. Since then, astronauts from various countries have participated in numerous space missions, contributing to our
+                    understanding of space and advancing human space exploration.
+                </p>
+                <hr />
+                <p>Here are a few facts about me:</p>
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/blog">Blog</a></li>
+                    <li>My name is {identity.name}.</li>
+                    <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
+                    {
+                        identity.hobbies.length >= 2 && (
+                            <li>
+                                Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}
+                            </li>
+                        )
+                    }
                 </ul>
-            </nav>
-        </header>
-        <h2>{pageTitle}</h2>
-        <p>What do we know about astronauts?</p>
-        <p>
-            The history of astronauts began with Yuri Gagarin, who became the first human to journey into outer space on April 12, 1961, aboard Vostok 1. This
-            milestone was followed by the United States' Apollo missions, which culminated in Neil Armstrong and Buzz Aldrin landing on the moon on July 20,
-            1969. Since then, astronauts from various countries have participated in numerous space missions, contributing to our understanding of space and
-            advancing human space exploration.
-        </p>
-        <hr />
-        <p>Here are a few facts about me:</p>
-        <ul>
-            <li>My name is {identity.name}.</li>
-            <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
-            {
-                identity.hobbies.length >= 2 && (
-                    <li>
-                        Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}
-                    </li>
-                )
-            }
-        </ul>
-        <p>My skills are:</p>
-        <ul>
-            {skills.map((skill) => <li class="skill">{skill}</li>)}
-        </ul>
-        <hr />
-        {happy && <p>I am happy to be learning Astro!</p>}
+                <p>My skills are:</p>
+                <ul>
+                    {skills.map((skill) => <li class="skill">{skill}</li>)}
+                </ul>
+                <hr />
+                {happy && <p>I am happy to be learning Astro!</p>}
 
-        {finished && <p>I finished this tutorial!</p>}
+                {finished && <p>I finished this tutorial!</p>}
 
-        {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+                {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+            </section>
+            <Footer />
+        </main>
     </body>
 </html>

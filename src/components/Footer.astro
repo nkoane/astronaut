@@ -1,0 +1,27 @@
+---
+import Social from './Social.astro';
+const socialise = [
+    { platform: 'twitter', username: 'ltdn' },
+    { platform: 'github', username: 'nkoane' },
+    { platform: 'instagram', username: 'ltdn' },
+];
+---
+
+<footer>
+    {
+        socialise.map(({ platform, username }) => (
+            <p>
+                <Social platform={platform} username={username} />
+            </p>
+        ))
+    }
+</footer>
+
+<style>
+    footer {
+        border-top: 1px solid #999;
+        color: #aaa;
+        display: flex;
+        gap: 1rem;
+    }
+</style>

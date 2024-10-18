@@ -1,6 +1,6 @@
 ---
-import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
 import '../styles/global.css';
 
 const pageTitle = 'About';
@@ -26,7 +26,7 @@ const textCase = 'uppercase';
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-        <title>Astronaut / {pageTitle}</title>
+        <title>Astronaut | {pageTitle}</title>
         <style define:vars={{ skillColour, fontWeight, textCase }}>
             h1 {
                 color: purple;
@@ -41,10 +41,7 @@ const textCase = 'uppercase';
     </head>
     <body>
         <main>
-            <header>
-                <h1>Astronaut</h1>
-                <Navigation />
-            </header>
+            <Header pageTitle={pageTitle} />
             <section>
                 <h2>{pageTitle}</h2>
                 <p>What do we know about astronauts?</p>

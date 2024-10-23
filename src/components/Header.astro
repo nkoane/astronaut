@@ -1,11 +1,11 @@
 ---
 import Navigation from './Navigation.astro';
 import Hamburger from './Hamburger.astro';
-const { pageTitle } = Astro.props;
+const pageTitle = 'Astronauts';
 ---
 
 <header>
-    <h1>Astronaut &middot; {pageTitle}</h1>
+    <h1>{pageTitle}</h1>
     <nav>
         <Hamburger />
         <Navigation />

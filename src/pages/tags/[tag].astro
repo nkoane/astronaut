@@ -11,27 +11,25 @@ export const getStaticPaths = (() => {
 
 export async function getStaticPaths() {
     const posts = await Astro.glob('../posts/*.md');
-    return [
-        { params: { tag: 'astro' }, props: { posts } },
-        { params: { tag: 'blogging' }, props: { posts } },
-        { params: { tag: 'learning-in-public' }, props: { posts } },
-        { params: { tag: 'success' }, props: { posts } },
-        { params: { tag: 'setbacks' }, props: { posts } },
-        { params: { tag: 'community' }, props: { posts } },
-        { params: { tag: 'dololo' }, props: { posts } },
-    ];
+    const tags = [...new Set(posts.map((posts) => posts.frontmatter.tags).flat())];
+    return tags.map((tag) => {
+        const tagged = posts.filter((post) => post.frontmatter.tags?.includes(tag));
+        return {
+            params: { tag },
+            props: { posts: tagged },
+        };
+    });
 }
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
-const taggedPosts = posts.filter((post) => post.frontmatter.tags?.includes(tag));
 ---
 
 <BaseLayout pageTitle={tag}>
     <p>Posts with {tag}</p>
     {
-        taggedPosts.length > 0 ? (
-            taggedPosts.map((post) => (
+        posts.length > 0 ? (
+            posts.map((post) => (
                 <ul>
                     <li>
                         <BlogPost url={post.url} title={post.frontmatter.title} date={post.frontmatter.pubDate} />

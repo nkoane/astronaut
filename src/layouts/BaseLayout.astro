@@ -3,11 +3,12 @@ import { ViewTransitions } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import { slide } from 'astro:transitions';
 
 const { pageTitle } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" transition:animate={slide({ delay: '5s' })}>
     <head>
         <meta charset="UTF-8" />
         <link rel="icon" type="images/svg+xml" href="/favicon.svg" />

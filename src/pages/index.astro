@@ -1,8 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Greeting from '../components/preact/Greeting';
 const pageTitle = 'Earth';
 ---
 
 <BaseLayout pageTitle={pageTitle}>
     <h3>Space, the final frontier.</h3>
+    <Greeting client:load messages={['Dumela', 'Sawubona', 'Molo', 'Avuxeni']} />
 </BaseLayout>

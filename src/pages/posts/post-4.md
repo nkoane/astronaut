@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/PostLayout.astro
-title: My Fourth Blog Post
+title: 'Fourth'
 author: Astro Learner
 description: "This post will show up on its own!"
 image:
